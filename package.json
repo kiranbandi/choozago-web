@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.14.0",
+    "qrcode.react": "^0.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.0"
