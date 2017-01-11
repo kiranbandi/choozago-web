@@ -1,0 +1,61 @@
+.qr-container {
+    padding: 50px;
+    text-align: center;
+}
+
+.qr-container canvas {
+    margin-top: 50px;
+    border: 10px solid white;
+    display: inline-block;
+}
+
+.qr-container .qr-box {
+    padding: 10px;
+}
+#app-container > .navbar a {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#navbar a span.icon {
+    padding: 4px 5px;
+    border: 3px solid #cfd2da;
+    margin-right: 10px;
+    border-radius: 35px;
+}
+
+
+.home-header {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #1ca8dd;
+  background-image: linear-gradient(to bottom, #137499, #1ca8dd);
+}
+.home-header h1 {
+  margin-bottom: 5px;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: bold;
+}
+.home-header p {
+  font-weight: 300;
+  line-height: 1.4;
+  color: #9fdcf3;
+}
+@media (min-width: 768px) {
+  .home-header {
+    font-size: 24px;
+  }
+  .home-header h1 {
+    font-size: 60px;
+  }
+}
+@media (min-width: 1200px) {
+  .home-header h1,
+  .home-header p {
+    max-width: 75%;
+  }
+}
