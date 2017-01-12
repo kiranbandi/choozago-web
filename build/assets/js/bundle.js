@@ -26581,7 +26581,7 @@
 	  }
 	});
 
-	var _TicketCard = __webpack_require__(249);
+	var _TicketCard = __webpack_require__(238);
 
 	Object.defineProperty(exports, 'TicketCard', {
 	  enumerable: true,
@@ -26590,7 +26590,7 @@
 	  }
 	});
 
-	var _QRCode = __webpack_require__(238);
+	var _QRCode = __webpack_require__(241);
 
 	Object.defineProperty(exports, 'QRCode', {
 	  enumerable: true,
@@ -26898,13 +26898,168 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _qrcode = __webpack_require__(239);
+	var _ajaxHelpers = __webpack_require__(239);
+
+	var _ajaxHelpers2 = _interopRequireDefault(_ajaxHelpers);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TicketCard = function (_Component) {
+	  _inherits(TicketCard, _Component);
+
+	  function TicketCard(props) {
+	    _classCallCheck(this, TicketCard);
+
+	    var _this = _possibleConstructorReturn(this, (TicketCard.__proto__ || Object.getPrototypeOf(TicketCard)).call(this, props));
+
+	    _this.state = {
+	      ticketData: null
+	    };
+	    return _this;
+	  }
+
+	  _createClass(TicketCard, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _ajaxHelpers2.default.getTicketData(this.props.ticketId).then(function (data) {
+	        this.setState({ ticketData: data });
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var ticketData = this.state.ticketData;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'ticket-card-container' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Ticket ID-',
+	          this.props.ticketId
+	        ),
+	        !!ticketData && _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'statcard statcard-primary p-a-md' },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'statcard-number' },
+	              ticketData.location
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'statcard-number parking-status-indicator btn-' + (ticketData.status == 'parked' ? 'success' : 'info') },
+	              _react2.default.createElement('span', { className: 'icon icon-home' }),
+	              ticketData.status
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'name-slot' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'statcard-desc m-r' },
+	                ticketData.name
+	              ),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'statcard-desc' },
+	                Date(ticketData.timeSlot)
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TicketCard;
+	}(_react.Component);
+
+	exports.default = TicketCard;
+	;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _endPoints = __webpack_require__(240);
+
+	var _endPoints2 = _interopRequireDefault(_endPoints);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ajaxHelpers = {
+	  getTicketData: function getTicketData(ticketId) {
+	    var url = _endPoints2.default.getTicketData;
+
+	    // return $.getJSON(url);
+
+	    return $.Deferred(function (defer) {
+	      defer.resolve({
+	        "location": "Infospace Building Gurgaon",
+	        "name": "Lorem User",
+	        "status": "parked",
+	        "timeSlot": "1484196443982",
+	        "ticketId": "1122"
+
+	      });
+	    }).promise();
+	  }
+	};
+
+	module.exports = ajaxHelpers;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var endPoints = {
+	  getTicketData: "/data/ticketData.json",
+	  getParkingStats: "/data/parkingStats.json",
+	  parkCar: "/data/parkCar.json"
+
+	};
+
+	module.exports = endPoints;
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _qrcode = __webpack_require__(242);
 
 	var _qrcode2 = _interopRequireDefault(_qrcode);
 
 	var _ = __webpack_require__(234);
 
-	var _ajaxHelpers = __webpack_require__(250);
+	var _ajaxHelpers = __webpack_require__(239);
 
 	var _ajaxHelpers2 = _interopRequireDefault(_ajaxHelpers);
 
@@ -26967,7 +27122,7 @@
 	;
 
 /***/ },
-/* 239 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26975,8 +27130,8 @@
 	var React = __webpack_require__(1);
 	// qr.js doesn't handle error level of zero (M) so we need to do it right,
 	// thus the deep require.
-	var QRCodeImpl = __webpack_require__(240);
-	var ErrorCorrectLevel = __webpack_require__(244);
+	var QRCodeImpl = __webpack_require__(243);
+	var ErrorCorrectLevel = __webpack_require__(247);
 
 	function getBackingStorePixelRatio(ctx) {
 	  return ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
@@ -27079,14 +27234,14 @@
 	module.exports = QRCode;
 
 /***/ },
-/* 240 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var BitByte = __webpack_require__(241);
-	var RSBlock = __webpack_require__(243);
-	var BitBuffer = __webpack_require__(245);
-	var util = __webpack_require__(246);
-	var Polynomial = __webpack_require__(247);
+	var BitByte = __webpack_require__(244);
+	var RSBlock = __webpack_require__(246);
+	var BitBuffer = __webpack_require__(248);
+	var util = __webpack_require__(249);
+	var Polynomial = __webpack_require__(250);
 
 	function QRCode(typeNumber, errorCorrectLevel) {
 		this.typeNumber = typeNumber;
@@ -27523,10 +27678,10 @@
 
 
 /***/ },
-/* 241 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mode = __webpack_require__(242);
+	var mode = __webpack_require__(245);
 
 	function QR8bitByte(data) {
 		this.mode = mode.MODE_8BIT_BYTE;
@@ -27552,7 +27707,7 @@
 
 
 /***/ },
-/* 242 */
+/* 245 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -27564,11 +27719,11 @@
 
 
 /***/ },
-/* 243 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// ErrorCorrectLevel
-	var ECL = __webpack_require__(244);
+	var ECL = __webpack_require__(247);
 
 	function QRRSBlock(totalCount, dataCount) {
 		this.totalCount = totalCount;
@@ -27869,7 +28024,7 @@
 
 
 /***/ },
-/* 244 */
+/* 247 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -27882,7 +28037,7 @@
 
 
 /***/ },
-/* 245 */
+/* 248 */
 /***/ function(module, exports) {
 
 	function QRBitBuffer() {
@@ -27926,12 +28081,12 @@
 
 
 /***/ },
-/* 246 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Mode = __webpack_require__(242);
-	var Polynomial = __webpack_require__(247);
-	var math = __webpack_require__(248);
+	var Mode = __webpack_require__(245);
+	var Polynomial = __webpack_require__(250);
+	var math = __webpack_require__(251);
 
 	var QRMaskPattern = {
 		PATTERN000 : 0,
@@ -28211,10 +28366,10 @@
 
 
 /***/ },
-/* 247 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var math = __webpack_require__(248);
+	var math = __webpack_require__(251);
 
 	function QRPolynomial(num, shift) {
 
@@ -28284,7 +28439,7 @@
 
 
 /***/ },
-/* 248 */
+/* 251 */
 /***/ function(module, exports) {
 
 	var QRMath = {
@@ -28332,149 +28487,6 @@
 
 	module.exports = QRMath;
 
-
-/***/ },
-/* 249 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _ajaxHelpers = __webpack_require__(250);
-
-	var _ajaxHelpers2 = _interopRequireDefault(_ajaxHelpers);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var TicketCard = function (_Component) {
-	  _inherits(TicketCard, _Component);
-
-	  function TicketCard(props) {
-	    _classCallCheck(this, TicketCard);
-
-	    var _this = _possibleConstructorReturn(this, (TicketCard.__proto__ || Object.getPrototypeOf(TicketCard)).call(this, props));
-
-	    _this.state = {
-	      ticketData: null
-	    };
-	    return _this;
-	  }
-
-	  _createClass(TicketCard, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      _ajaxHelpers2.default.getTicketData(this.props.ticketId).then(function (data) {
-	        this.setState({ ticketData: data });
-	      }.bind(this));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var ticketData = this.state.ticketData;
-
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'ticket-card-container' },
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Ticket ID-',
-	          this.props.ticketId
-	        ),
-	        !!ticketData && _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'statcard statcard-primary p-a-md' },
-	            _react2.default.createElement(
-	              'h3',
-	              { className: 'statcard-number' },
-	              ticketData.location
-	            ),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'statcard-number parking-status-indicator btn-' + (ticketData.status == 'parked' ? 'success' : 'info') },
-	              _react2.default.createElement('span', { className: 'icon icon-home' }),
-	              ticketData.status
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'name-slot' },
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'statcard-desc m-r' },
-	                ticketData.name
-	              ),
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'statcard-desc' },
-	                Date(ticketData.timeSlot)
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return TicketCard;
-	}(_react.Component);
-
-	exports.default = TicketCard;
-	;
-
-/***/ },
-/* 250 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _endPoints = __webpack_require__(251);
-
-	var _endPoints2 = _interopRequireDefault(_endPoints);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ajaxHelpers = {
-	  getTicketData: function getTicketData(ticketId) {
-	    var url = _endPoints2.default.getTicketData;
-	    return $.getJSON(url);
-	  }
-	};
-
-	module.exports = ajaxHelpers;
-
-/***/ },
-/* 251 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var endPoints = {
-	  getTicketData: "/data/ticketData.json",
-	  getParkingStats: "/data/parkingStats.json",
-	  parkCar: "/data/parkCar.json"
-
-	};
-
-	module.exports = endPoints;
 
 /***/ }
 /******/ ]);
