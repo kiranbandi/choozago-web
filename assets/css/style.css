@@ -4,7 +4,6 @@
 }
 
 .qr-container canvas {
-    margin-top: 50px;
     border: 10px solid white;
     display: inline-block;
 }
@@ -58,4 +57,37 @@
   .home-header p {
     max-width: 75%;
   }
+}
+
+.home-body > h1 {
+    padding-bottom: 9.5px;
+    margin: 42px 0 21px;
+    border-bottom: 1px solid #434857;
+}
+
+.stats-box .statcard .statcard-number{
+margin-top: 10px;
+}
+
+.ticket-card-container {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ticket-card-container .statcard-number {
+  margin-bottom: 35px;
+}
+
+.ticket-card-container .name-slot {
+  margin-top: 35px;
+}
+.parking-status-indicator {
+    padding: 15px;
+    border-radius: 100px;
+    font-size: 20px;
+    font-weight: bold !important;
+}
+
+.parking-status-indicator .icon {
+  margin-right:8px;
 }
