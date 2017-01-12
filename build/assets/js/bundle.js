@@ -26581,6 +26581,15 @@
 	  }
 	});
 
+	var _TicketCard = __webpack_require__(249);
+
+	Object.defineProperty(exports, 'TicketCard', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_TicketCard).default;
+	  }
+	});
+
 	var _QRCode = __webpack_require__(238);
 
 	Object.defineProperty(exports, 'QRCode', {
@@ -26631,7 +26640,7 @@
 	      return _react2.default.createElement(
 	        'h1',
 	        null,
-	        '404 This page is not found! :-(  Sorry !!'
+	        '404 ! Sorry Page Not Found / Under Construction ! :-( '
 	      );
 	    }
 	  }]);
@@ -26681,28 +26690,105 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "home-header" },
+	        null,
 	        _react2.default.createElement(
 	          "div",
-	          { className: "container" },
+	          { className: "home-header" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-8 text-lg-left text-md-center text-sm-center text-xs-center" },
+	            { className: "container" },
 	            _react2.default.createElement(
-	              "h1",
-	              null,
-	              "Choozago"
+	              "div",
+	              { className: "col-lg-8 text-lg-left text-md-center text-sm-center text-xs-center" },
+	              _react2.default.createElement(
+	                "h1",
+	                null,
+	                "Choozago"
+	              ),
+	              _react2.default.createElement(
+	                "p",
+	                null,
+	                "Your one stop solution to all your parking needs"
+	              )
 	            ),
 	            _react2.default.createElement(
-	              "p",
-	              null,
-	              "Your one stop solution to all your parking needs"
+	              "div",
+	              { className: "col-lg-4 text-lg-left text-center" },
+	              _react2.default.createElement("img", { height: "150px", src: "assets/img/car.png", alt: "car logo" })
 	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "container home-body" },
+	          _react2.default.createElement(
+	            "h1",
+	            null,
+	            "How does it work ?"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra turpis lorem, vitae condimentum dui vestibulum a. Mauris in tortor nibh. Nunc ac varius velit, eu cursus ex. Nunc feugiat odio sit amet urna sodales luctus. Fusce tempor tristique est, eu tempor magna viverra et. Nam nec interdum odio. Curabitur vestibulum ut felis in faucibus."
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "Phasellus imperdiet sodales lorem,  After Y2K, the end of the world had become a clich\xE9. But who was I to talk, a brooding underdog avenger alone against an empire of evil, out to right a grave injustice? Everything was subjective. There were only personal apocalypses. Nothing is a clich\xE9 when it's happening to you - Max Payne elit tempus, id pharetra lorem elementum. Phasellus sit amet erat ornare sem egestas varius sit amet ut nunc. Suspendisse sit amet nisl vitae mi mattis luctus. Integer at felis mi. Vivamus et purus et ligula dignissim euismod in quis magna. Suspendisse cursus eleifend augue non tristique. Aliquam rutrum facilisis massa at tincidunt. Duis nec ante quam. Proin eleifend elit felis, vel egestas lacus hendrerit sit amet. In urna lectus, aliquam a dapibus nec, auctor sit amet eros."
+	          ),
+	          _react2.default.createElement(
+	            "h1",
+	            null,
+	            "Parking Slots Available"
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4 text-lg-left text-center" },
-	            _react2.default.createElement("img", { height: "150px", src: "assets/img/car.png", alt: "car logo" })
+	            { className: "stats-box" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "col-lg-4 col-md-6 statcard p-a-md text-center" },
+	              _react2.default.createElement("img", { className: "img-responsive", src: "assets/img/del-sp.png", alt: "delsp image" }),
+	              _react2.default.createElement(
+	                "h3",
+	                { className: "statcard-number" },
+	                "12,938"
+	              ),
+	              _react2.default.createElement(
+	                "span",
+	                { className: "statcard-desc" },
+	                "Delhi Shastri Park"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "col-lg-4 col-md-6 statcard p-a-md text-center" },
+	              _react2.default.createElement("img", { className: "img-responsive", src: "assets/img/ggn-7b.png", alt: "7B image" }),
+	              _react2.default.createElement(
+	                "h3",
+	                { className: "statcard-number" },
+	                "758"
+	              ),
+	              _react2.default.createElement(
+	                "span",
+	                { className: "statcard-desc" },
+	                "Gurgaon 7B"
+	              )
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "col-lg-4 col-md-6 statcard p-a-md text-center" },
+	              _react2.default.createElement("img", { className: "img-responsive", src: "assets/img/ggn-infospace.png", alt: "Ggn inf image" }),
+	              _react2.default.createElement(
+	                "h3",
+	                { className: "statcard-number" },
+	                "1,293"
+	              ),
+	              _react2.default.createElement(
+	                "span",
+	                { className: "statcard-desc" },
+	                "Gurgaon Infospace"
+	              )
+	            )
 	          )
 	        )
 	      );
@@ -26732,6 +26818,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _ = __webpack_require__(234);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26753,10 +26841,36 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Please Park Your Car with ticket ID ',
-	        this.props.params.ticketId
+	        'div',
+	        { className: 'park-car-container m-t' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-lg-6' },
+	          _react2.default.createElement(_.TicketCard, { ticketId: this.props.params.ticketId })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-lg-6' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'm-t' },
+	            'Passcode'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'input-group' },
+	            _react2.default.createElement('input', { id: 'passcode', className: 'form-control', type: 'number', placeholder: 'Please Enter 4 Digit Pin', min: '1001', max: '9999' }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'input-group-btn' },
+	              _react2.default.createElement(
+	                'button',
+	                { id: 'parkBtn', className: 'btn btn-success', type: 'button' },
+	                'PARK'
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -26788,6 +26902,12 @@
 
 	var _qrcode2 = _interopRequireDefault(_qrcode);
 
+	var _ = __webpack_require__(234);
+
+	var _ajaxHelpers = __webpack_require__(250);
+
+	var _ajaxHelpers2 = _interopRequireDefault(_ajaxHelpers);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26813,19 +26933,29 @@
 	  _createClass(QRCode, [{
 	    key: 'render',
 	    value: function render() {
+	      var ticketId = this.state.ticketId,
+	          rootLocation = window.location.href.split("#")[0];
 
-	      var storeString = 'https://kiranbandi.github.io/choozago-web/#/ParkCar/' + this.state.ticketId;
-	      console.log(storeString);
+	      var storeString = rootLocation + '/#/ParkCar/' + ticketId;
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'qr-container' },
 	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Display QR Code for Ticket ID ',
-	          this.state.ticketId
+	          'div',
+	          { className: 'col-lg-6' },
+	          _react2.default.createElement(_.TicketCard, { ticketId: ticketId })
 	        ),
-	        _react2.default.createElement(_qrcode2.default, { size: 200, value: storeString, level: 'M' })
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-lg-6' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'QR Code'
+	          ),
+	          _react2.default.createElement(_qrcode2.default, { size: 200, value: storeString, level: 'M' })
+	        )
 	      );
 	    }
 	  }]);
@@ -26833,9 +26963,8 @@
 	  return QRCode;
 	}(_react.Component);
 
-	;
-
 	exports.default = QRCode;
+	;
 
 /***/ },
 /* 239 */
@@ -28203,6 +28332,149 @@
 
 	module.exports = QRMath;
 
+
+/***/ },
+/* 249 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ajaxHelpers = __webpack_require__(250);
+
+	var _ajaxHelpers2 = _interopRequireDefault(_ajaxHelpers);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TicketCard = function (_Component) {
+	  _inherits(TicketCard, _Component);
+
+	  function TicketCard(props) {
+	    _classCallCheck(this, TicketCard);
+
+	    var _this = _possibleConstructorReturn(this, (TicketCard.__proto__ || Object.getPrototypeOf(TicketCard)).call(this, props));
+
+	    _this.state = {
+	      ticketData: null
+	    };
+	    return _this;
+	  }
+
+	  _createClass(TicketCard, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _ajaxHelpers2.default.getTicketData(this.props.ticketId).then(function (data) {
+	        this.setState({ ticketData: data });
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var ticketData = this.state.ticketData;
+
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'ticket-card-container' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Ticket ID-',
+	          this.props.ticketId
+	        ),
+	        !!ticketData && _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'statcard statcard-primary p-a-md' },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'statcard-number' },
+	              ticketData.location
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'statcard-number parking-status-indicator btn-' + (ticketData.status == 'parked' ? 'success' : 'info') },
+	              _react2.default.createElement('span', { className: 'icon icon-home' }),
+	              ticketData.status
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'name-slot' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'statcard-desc m-r' },
+	                ticketData.name
+	              ),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'statcard-desc' },
+	                Date(ticketData.timeSlot)
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TicketCard;
+	}(_react.Component);
+
+	exports.default = TicketCard;
+	;
+
+/***/ },
+/* 250 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _endPoints = __webpack_require__(251);
+
+	var _endPoints2 = _interopRequireDefault(_endPoints);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ajaxHelpers = {
+	  getTicketData: function getTicketData(ticketId) {
+	    var url = _endPoints2.default.getTicketData;
+	    return $.getJSON(url);
+	  }
+	};
+
+	module.exports = ajaxHelpers;
+
+/***/ },
+/* 251 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var endPoints = {
+	  getTicketData: "/data/ticketData.json",
+	  getParkingStats: "/data/parkingStats.json",
+	  parkCar: "/data/parkCar.json"
+
+	};
+
+	module.exports = endPoints;
 
 /***/ }
 /******/ ]);
