@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ajaxHelpers from "../utils/ajaxHelpers";
+
 export default class TicketCard extends Component {
 
 constructor(props) {

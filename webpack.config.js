@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 module.exports = {
-  entry: './js/main.js',
+  entry: './src/app.js',
   output: {
         path: __dirname + '/build/assets/js',
         filename: "bundle.js"

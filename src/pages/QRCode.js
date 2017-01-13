@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactQR from 'qrcode.react'; 
-import { TicketCard } from './';
+import { TicketCard } from '../components';
 import ajaxHelpers from '../utils/ajaxHelpers';
 
 
@@ -20,7 +20,7 @@ render () {
   let storeString = `${rootLocation}/#/ParkCar/${ticketId}`;
 
     return (
-    	<div className='qr-container'>
+    	<div className='container qr-container'>
       <div className ='col-lg-6'>
        <TicketCard ticketId={ticketId}/>
       </div>
