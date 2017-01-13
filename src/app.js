@@ -4,6 +4,9 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { NotFound,Home,ParkCar,QRCode } from './pages';
 import { Container } from './components';
 
+//Root sass file for webpack to compile
+import './sass/main.scss';
+
 class App extends Component {
   
   render () {

@@ -52,12 +52,6 @@
     font-size: 60px;
   }
 }
-@media (min-width: 1200px) {
-  .home-header h1,
-  .home-header p {
-    max-width: 75%;
-  }
-}
 
 .home-body > h1 {
     padding-bottom: 9.5px;
@@ -91,3 +85,6 @@ margin-top: 10px;
 .parking-status-indicator .icon {
   margin-right:8px;
 }
+
+
+/*active class name is added for links -styling pending -start once all routing is done*/

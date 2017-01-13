@@ -18,31 +18,33 @@ export default class NavBar extends Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <a className="navbar-brand navbar-brand-emphasized" href='lorem'>
+                            <Link className="navbar-brand navbar-brand-emphasized" to='/'>
                                 <span className="icon icon-home navbar-brand-icon"></span> Home
-                            </a>
+                            </Link>
                         </div>
                         <div id="navbar" className="navbar-collapse collapse ">
                             <ul className="nav navbar-nav">
                                 <li>
-                                    <a href='lorem'>
+                                    <Link activeClassName='active-nav-link' to='/QRCode/1234'>
                                         <span className="icon icon-location"></span> Book Ticket
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href='lorem'>
-                                        <span className="icon icon-eye"></span>View Ticket</a>
+                                    <Link activeClassName='active-nav-link' to='/QRCode/1234'>
+                                        <span className="icon icon-eye"></span>View Ticket
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href='lorem'>
-                                        <span className="icon icon-cross"></span> Cancel Ticket</a>
+                                    <Link activeClassName='active-nav-link' to='/ParkCar/1234'>
+                                        <span className="icon icon-cross"></span> Cancel Ticket
+                                    </Link>
                                 </li>
                             </ul>
                             <ul className='nav navbar-nav navbar-right'>
                                 <li>
-                                    <a href='lorem'>
+                                    <Link to='/'>
                                         <span className="icon icon-user"></span> LOGIN
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

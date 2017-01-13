@@ -1,4 +1,5 @@
-var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   entry: './src/app.js',
   output: {
@@ -17,11 +18,13 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel'
       },
-       { test: /\.css$/, 
-        loader: "style!css" 
+       { test: /\.scss$/, 
+        loader: ExtractTextPlugin.extract('css!sass')
     }
     ]
-  }
-
+  },
+  plugins: [
+        new ExtractTextPlugin('../css/choozago.css')
+    ]
 }
 

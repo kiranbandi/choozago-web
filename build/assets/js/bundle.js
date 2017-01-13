@@ -62,6 +62,8 @@
 
 	var _components = __webpack_require__(243);
 
+	__webpack_require__(260);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69,6 +71,9 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//Root sass file for webpack to compile
+
 
 	var App = function (_Component) {
 	  _inherits(App, _Component);
@@ -26962,7 +26967,7 @@
 	            { className: "container" },
 	            _react2.default.createElement(
 	              "div",
-	              { className: "col-lg-8 text-lg-left text-md-center text-sm-center text-xs-center" },
+	              { className: "col-lg-9 text-lg-left text-md-center text-sm-center text-xs-center" },
 	              _react2.default.createElement(
 	                "h1",
 	                null,
@@ -26971,12 +26976,17 @@
 	              _react2.default.createElement(
 	                "p",
 	                null,
-	                "Your one stop solution to all your parking needs"
+	                _react2.default.createElement(
+	                  "i",
+	                  null,
+	                  "Choose on the go"
+	                ),
+	                " Your one stop solution to all your parking needs"
 	              )
 	            ),
 	            _react2.default.createElement(
 	              "div",
-	              { className: "col-lg-4 text-lg-left text-center" },
+	              { className: "col-lg-3 text-lg-right text-center" },
 	              _react2.default.createElement("img", { height: "150px", src: "assets/img/car.png", alt: "car logo" })
 	            )
 	          )
@@ -27399,8 +27409,8 @@
 	                            _react2.default.createElement('span', { className: 'icon-bar' })
 	                        ),
 	                        _react2.default.createElement(
-	                            'a',
-	                            { className: 'navbar-brand navbar-brand-emphasized', href: 'lorem' },
+	                            _reactRouter.Link,
+	                            { className: 'navbar-brand navbar-brand-emphasized', to: '/' },
 	                            _react2.default.createElement('span', { className: 'icon icon-home navbar-brand-icon' }),
 	                            ' Home'
 	                        )
@@ -27415,8 +27425,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: 'lorem' },
+	                                    _reactRouter.Link,
+	                                    { activeClassName: 'active-nav-link', to: '/QRCode/1234' },
 	                                    _react2.default.createElement('span', { className: 'icon icon-location' }),
 	                                    ' Book Ticket'
 	                                )
@@ -27425,8 +27435,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: 'lorem' },
+	                                    _reactRouter.Link,
+	                                    { activeClassName: 'active-nav-link', to: '/QRCode/1234' },
 	                                    _react2.default.createElement('span', { className: 'icon icon-eye' }),
 	                                    'View Ticket'
 	                                )
@@ -27435,8 +27445,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: 'lorem' },
+	                                    _reactRouter.Link,
+	                                    { activeClassName: 'active-nav-link', to: '/ParkCar/1234' },
 	                                    _react2.default.createElement('span', { className: 'icon icon-cross' }),
 	                                    ' Cancel Ticket'
 	                                )
@@ -27449,8 +27459,8 @@
 	                                'li',
 	                                null,
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: 'lorem' },
+	                                    _reactRouter.Link,
+	                                    { to: '/' },
 	                                    _react2.default.createElement('span', { className: 'icon icon-user' }),
 	                                    ' LOGIN'
 	                                )
@@ -28969,6 +28979,12 @@
 
 	module.exports = QRMath;
 
+
+/***/ },
+/* 260 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
