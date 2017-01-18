@@ -1,10 +1,9 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 module.exports = {
   entry: './src/app.js',
   output: {
         path: __dirname + '/build/assets/js',
-        filename: "bundle.js"
+        filename: "bundle.js",
+        publicPath:"/assets/js"
     },
   devServer: {
     inline: true,
@@ -19,12 +18,9 @@ module.exports = {
         loader: 'babel'
       },
        { test: /\.scss$/, 
-        loader: ExtractTextPlugin.extract('css!sass')
+        loaders: ['style', 'css', 'sass']
     }
     ]
-  },
-  plugins: [
-        new ExtractTextPlugin('../css/choozago.css')
-    ]
+  }
 }
 
