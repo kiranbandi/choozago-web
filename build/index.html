@@ -20,26 +20,6 @@
   </head>
 
   <body class='with-top-navbar'>
-    <!-- Facebook sdk for social login -->
-    <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '393366520998967',
-        xfbml      : true,
-        version    : 'v2.6'
-      });
-    };
-    FB.AppEvents.logPageView();    
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
-
    	  <!--react root container where content would be loaded-->
    	  <div id="root"></div>
    	  <!--loading assets and webpack bundle-->
