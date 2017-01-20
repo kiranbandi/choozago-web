@@ -1,14 +1,6 @@
-.qr-container {
-    padding: 50px;
-    text-align: center;
-    
-    canvas {
-    border: 10px solid white;
-    display: inline-block;
-    }
-    
-    .qr-box {
-    padding:10px;
-    }
+.park-car-container{
+ input[type=number] {
+    -webkit-text-security: disc;
+    -moz-text-security:disc;
+}   
 }
-

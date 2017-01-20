@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { NavBar, Modal } from './';
+import { NavBar, Modal} from './';
 
 export default class Container extends Component {
     
