@@ -1,3 +1,4 @@
+/*global $*/
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
@@ -5,6 +6,18 @@ export default class NavBar extends Component {
     
     constructor(props) {
             super(props);
+    }
+
+    componentDidMount(){
+
+        $('.navbar-collapse').on('click',function(e) {
+
+             var toggle = $(".navbar-toggle").is(":visible");
+                if( $(e.target).is('a') && toggle ) {
+                    $(this).collapse('hide');
+                }
+        });
+
     }
     
   	render() {
@@ -18,7 +31,7 @@ export default class NavBar extends Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <Link className="navbar-brand navbar-brand-emphasized" to='/'>
+                            <Link data-toggle="collapse" data-target="#navbar" className="navbar-brand navbar-brand-emphasized" to='/'>
                                 <span className="icon icon-home navbar-brand-icon"></span> Home
                             </Link>
                         </div>
@@ -42,7 +55,7 @@ export default class NavBar extends Component {
                             </ul>
                             <ul className='nav navbar-nav navbar-right'>
                                 <li>
-                                    <Link to='/'>
+                                    <Link to='/Login'>
                                         <span className="icon icon-user"></span> LOGIN
                                     </Link>
                                 </li>

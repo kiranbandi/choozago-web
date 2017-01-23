@@ -2,5 +2,13 @@
  input[type=number] {
     -webkit-text-security: disc;
     -moz-text-security:disc;
+}
+.input-group {
+	    margin-bottom:10px;
+}
+
+.parking-rules li {
+	margin:22px 0px;
+	font-weight:bold;
 }   
 }

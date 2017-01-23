@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-import { NotFound,Home,ParkCar,QRCode } from './pages';
+import { NotFound,Home,ParkCar,QRCode ,Login} from './pages';
 import { Container } from './components';
 
 //Root sass file for webpack to compile
@@ -16,6 +16,7 @@ class App extends Component {
           <IndexRoute component={Home} />
           <Route path='QRCode/:ticketId' component={QRCode} />
           <Route path='ParkCar/:ticketId' component={ParkCar} />
+          <Route path='Login' component={Login} />
           <Route path='*' component={NotFound} />
         </Route>
       </Router>

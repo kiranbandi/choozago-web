@@ -34,7 +34,7 @@ render () {
       <h2>QR Code</h2>
           <ReactQR size={180} value={storeString} level='M'/>
             <p>Please display this at the time of parking your vehicle</p>
-            <a className="btn btn-success" type="button" onClick={this.download}>
+            <a className="btn btn-success-outline" type="button" onClick={this.download}>
               <span className="icon icon-download"></span>
               {" Download"}
             </a>
