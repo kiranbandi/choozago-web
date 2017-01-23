@@ -25,7 +25,7 @@ render () {
                       </div> 
                </div>
 
-              <div className ='col-lg-12'>
+              <div className ='col-lg-12 passcode-box'>
         		    <h2 className='m-t'>Passcode</h2>	
             		<div className="input-group">	
                     <input id="passcode" className="form-control" type="number" placeholder="Please Enter 4 Digit Pin" min="1001" max="9999"/>

@@ -3,8 +3,20 @@
     -webkit-text-security: disc;
     -moz-text-security:disc;
 }
-.input-group {
+.passcode-box {
+		
+		.input-group {
 	    margin-bottom:10px;
+
+	    input {
+	    height:35px;
+	    }
+	    button {
+	    height:35px;
+	    }
+}
+
+	
 }
 
 .parking-rules li {
