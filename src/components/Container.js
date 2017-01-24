@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { NavBar, Modal} from './';
+import { NavBar} from './';
 
 export default class Container extends Component {
     
@@ -25,11 +25,6 @@ export default class Container extends Component {
                 {/* navbar content , common for entire application */}
                 <NavBar handleShowModal={this.handleShowModal}/>
                 {this.props.children}
-                {/*Modal Content part of main Container*/}
-                <div className="row">
-                    <button className="btn btn-default btn-block hide" onClick={this.handleShowModal}>Open Modal</button>
-                    {this.state.view.showModal ? <Modal handleHideModal={this.handleHideModal}/> : null}
-                </div>
           </div>
 		);
 	}

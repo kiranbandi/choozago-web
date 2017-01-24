@@ -38,9 +38,16 @@
   border-bottom: 1px solid #434857;
       }
       
-      .stats-box .statcard .statcard-number{
-  margin-top: 10px;
-    }
+      .stats-box .statcard{
+        
+        .img-responsive {
+          margin:0 auto;
+        }
+        
+         .statcard-number{
+              margin-top: 10px;
+        }
+      }
   
     }
 
