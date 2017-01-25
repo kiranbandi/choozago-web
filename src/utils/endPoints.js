@@ -1,7 +1,7 @@
 var endPoints = {
-  getTicketData: "/data/ticketData.json",
-  getParkingStats: "/data/parkingStats.json",
-  parkCar:"/data/parkCar.json"
+  getTicketData: "/data/ticketData/",
+  getParkingStats: "/data/parkingStats/",
+  parkCar:"/data/parkCar/"
 
 }
 

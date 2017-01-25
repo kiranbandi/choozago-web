@@ -36,27 +36,19 @@ export default class NavBar extends Component {
                             </Link>
                         </div>
                         <div id="navbar" className="navbar-collapse collapse ">
-                            <ul className="nav navbar-nav">
+                                
+                            <ul className='nav navbar-nav'>
                                 <li>
-                                    <Link activeClassName='active-nav-link' to='/QRCode/1234'>
-                                        <span className="icon icon-location"></span> Book Ticket
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link activeClassName='active-nav-link' to='/QRCode/1234'>
-                                        <span className="icon icon-eye"></span>View Ticket
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link activeClassName='active-nav-link' to='/ParkCar/1234'>
-                                        <span className="icon icon-cross"></span> Cancel Ticket
+                                    <Link to='/Dashboard'>
+                                        <span className="icon icon-line-graph"></span> Dashboard
                                     </Link>
                                 </li>
                             </ul>
+                            
                             <ul className='nav navbar-nav navbar-right'>
                                 <li>
                                     <Link to='/Login'>
-                                        <span className="icon icon-user"></span> LOGIN
+                                        <span className="icon icon-user"></span> Login
                                     </Link>
                                 </li>
                             </ul>
