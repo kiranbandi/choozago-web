@@ -5,6 +5,7 @@
 @import 'components/container';
 @import 'components/navbar';
 @import 'components/ticketCard';
+@import 'components/graphContainer';
 
 // import pages contains page-specific styling
 
@@ -12,3 +13,9 @@
 @import 'pages/notFound';
 @import 'pages/parkCar';
 @import 'pages/login';
+@import 'pages/dashboard';
+
+// import vendors 
+
+@import 'vendor/toastr';
+

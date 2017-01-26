@@ -1,6 +1,7 @@
 /*global $ */
 import endPoints from './endPoints';
 import lambda from './getLambda';
+import toastr from './toastr';
 
 var ajaxHelpers = {};
 
@@ -12,24 +13,24 @@ var pullParams = {
 };
 
 
-ajaxHelpers.getTicketData = function(ticketId) {
+ajaxHelpers.ticketCall = function(ticketId,action) {
     
-    let payLoad =JSON.stringify({ action: "getTicket", data: { ticketId } },null,2) ,
+    let payLoad =JSON.stringify({ action, data: { ticketId } },null,2) ,
         pullParamsData = Object.assign({},pullParams,{Payload:payLoad})
 
     return $.Deferred(function( defer ) {
         
         lambda.invoke(pullParamsData, function(error, data) {
-          
           if (error) {
-                console.log(error);
                 defer.reject();
+                toastr["error"]("Network error please try again", "ERROR")
           } 
           else {
-
             var ticketStatus = JSON.parse(data.Payload);
+            if(!ticketStatus) {
+                toastr["error"]("No Records Found , Please try again")
+            }
             defer.resolve(ticketStatus);
-            
           }
         });
     
@@ -45,5 +46,6 @@ ajaxHelpers.getLoginToken = function(userid,password) {
         }).promise();
 
   }
+  
   
 module.exports = ajaxHelpers;

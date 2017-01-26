@@ -11,7 +11,7 @@ class Home extends Component {
                 <p><i>Choose on the go</i> Your one stop solution to all your parking needs</p>
                 </div>
                 <div className='col-lg-3 text-lg-right text-center'>
-                <img height='150px' src="assets/img/car.png" alt="car logo"/>
+                <img height='140px' src="assets/img/choozago.jpg" alt="car logo"/>
               </div>
               </div>
             </div>

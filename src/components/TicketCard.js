@@ -8,27 +8,34 @@ export default class TicketCard extends Component {
 constructor(props) {
   super(props);
   this.state = {
-  	ticketData:null
+  	ticketData:{},
+  	loading:true
   }
+  this.updateTicket = this.updateTicket.bind(this);
 
 }
 
- componentDidMount() {
-    ajaxHelpers.getTicketData(this.props.ticketId).then(function(data){
+componentDidMount() {
+    ajaxHelpers.ticketCall(this.props.ticketId,'getTicket').then((data)=> {
       this.setState({ticketData:data});
-    }.bind(this));
+    }).always(()=>{
+      this.setState({loading:false})
+    });
 }
 
 updateTicket(status){
-      ajaxHelpers.updateTicket(this.props.ticketId,status).then(function(data){
-      console.log("Car Parked Successfully");
-    }.bind(this));
+    this.setState({loading:true});
+      ajaxHelpers.ticketCall(this.props.ticketId,'parkTicket').then((data)=> {
+      this.setState({ticketData:data});
+      }).always(()=>{
+      this.setState({loading:false})
+    });
 }
 
 
 getStatusIndicator(){
   
-  const { status } = this.state;
+  const { status } = this.state.ticketData ;
   
   let statusObject = {
       statClass :"primary",
@@ -71,7 +78,7 @@ getStatusIndicator(){
 
 render () {
   
-    const { ticketData } = this.state ,
+    const { ticketData , loading } = this.state ,
           { alertClass , alertIcon , statClass } = this.getStatusIndicator();
 
     return (
@@ -82,7 +89,7 @@ render () {
   					  </h4>
   			</div>
 			
-      { !!ticketData ?
+      { !!ticketData && !loading ?
        
        <div>
         
@@ -101,6 +108,7 @@ render () {
             <h3 className="statcard-desc m-a">{`Name : ${ticketData.firstName} ${ticketData.lastName}`}</h3>
             <h3 className="statcard-desc ">{`Company : ${ticketData.company}`}</h3>
             <h3 className="statcard-desc">{`Booking Date : ${moment(ticketData.time*1000).format('ddd ll HH:MM A')}`}</h3>
+            { !!ticketData.parkedtime && <h3 className="statcard-desc">{`Parked Time : ${moment(ticketData.parkedtime*1000).format('HH:MM A')}`}</h3>}
           </div>
           </div>
 
@@ -108,16 +116,10 @@ render () {
     
       : <Loading type='spin' color='#3fbfe2' /> }
       
-      { !!ticketData && ticketData.status=="booked" &&
-        <button type="button" className="btn btn-lg btn-success m-a">
+      { !!ticketData && !loading && ticketData.status=="booked" &&
+        <button onClick={this.updateTicket} type="button" className="btn btn-lg btn-success m-a">
           <span className="icon icon-arrow-with-circle-up"></span>
           PARK
-        </button> }
-      
-      { !!ticketData && ticketData.status=="parked" &&
-        <button type="button" className="btn btn-lg btn-danger m-a">
-          <span className="icon icon-arrow-with-circle-down "></span>
-          EXIT
         </button> }
       
       </div>

@@ -1,3 +1,4 @@
+/*global $*/
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
@@ -6,6 +7,8 @@ import { Container } from './components';
 
 //Root sass file for webpack to compile
 import './sass/main.scss';
+
+window.jQuery = window.$;
 
 class App extends Component {
   
