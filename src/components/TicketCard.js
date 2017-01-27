@@ -35,7 +35,7 @@ updateTicket(status){
 
 getStatusIndicator(){
   
-  const { status } = this.state.ticketData ;
+  const { status } = !!this.state.ticketData ? this.state.ticketData : { };
   
   let statusObject = {
       statClass :"primary",
@@ -72,7 +72,6 @@ getStatusIndicator(){
     }  
     
     return statusObject;
-  
         
 }
 
@@ -89,10 +88,10 @@ render () {
   					  </h4>
   			</div>
 			
-      { !!ticketData && !loading ?
+      { !loading && !!ticketData ? 
        
        <div>
-        
+
           <div className={`statcard statcard-${statClass} p-a-md`}>
             <h3 className="statcard-number">
               {ticketData.locationDesc}
@@ -104,23 +103,24 @@ render () {
           </span>
 
 
-            <div className='name-slot'>
+          <div className='name-slot'>
             <h3 className="statcard-desc m-a">{`Name : ${ticketData.firstName} ${ticketData.lastName}`}</h3>
             <h3 className="statcard-desc ">{`Company : ${ticketData.company}`}</h3>
-            <h3 className="statcard-desc">{`Booking Date : ${moment(ticketData.time*1000).format('ddd ll HH:MM A')}`}</h3>
-            { !!ticketData.parkedtime && <h3 className="statcard-desc">{`Parked Time : ${moment(ticketData.parkedtime*1000).format('HH:MM A')}`}</h3>}
+            <h3 className="statcard-desc">{`Booking Date : ${moment(ticketData.time*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>
+            { !!ticketData.parkedtime && <h3 className="statcard-desc">{`Parked Time : ${moment(ticketData.parkedtime*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>}
           </div>
           </div>
-
-        </div> 
-    
-      : <Loading type='spin' color='#3fbfe2' /> }
-      
-      { !!ticketData && !loading && ticketData.status=="booked" &&
+          
+        { ticketData.status=="booked" &&
         <button onClick={this.updateTicket} type="button" className="btn btn-lg btn-success m-a">
           <span className="icon icon-arrow-with-circle-up"></span>
           PARK
         </button> }
+
+      </div> 
+      
+     : <Loading type='spin' color='#3fbfe2' />}
+      
       
       </div>
     )

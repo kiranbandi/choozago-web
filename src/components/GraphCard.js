@@ -4,7 +4,8 @@ import { Doughnut } from 'react-chartjs';
 import Chart from 'chart.js'
 
 Chart.defaults.global.responsive = true;
-
+Chart.defaults.global.cutoutPercentage=30;
+Chart.defaults.Doughnut.segmentStrokeColor='#252830';
 
 export default class GraphCard extends Component {
     
@@ -20,13 +21,11 @@ export default class GraphCard extends Component {
           {
               value: slotsBooked,
               color:"#F7464A",
-              highlight: "#FF5A5E",
               label: "Booked"
           },
           {
               value: slotsAvailable,
               color: "#FDB45C",
-              highlight: "#FFC870",
               label: "Available"
           }];
           
@@ -34,18 +33,17 @@ export default class GraphCard extends Component {
     }
 
   	render() {
+
 		return (
 		      <div className='col-lg-4 col-md-6'>
 		      <div className='graph-container m-a'>
   				  <h4 className="slot-name m-a-md">
   				   			{this.props.slotData.name}
   				  </h4>
-                <Doughnut data={this.mixinData()}/>
-                <h4 className='slot-legend m-a-md'>Slots Booked VS Slots Available</h4>
+                <Doughnut data={this.mixinData()} />
+                <h4 className='slot-legend m-a-md'>SLOTS : Booked VS Available</h4>
               </div>
               </div>
 		);
 	}
 }  
-
-
