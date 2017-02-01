@@ -10,7 +10,7 @@ constructor(props) {
   this.state = {
   	ticketData:{},
   	loading:true
-  }
+  };
   this.updateTicket = this.updateTicket.bind(this);
 
 }
@@ -19,7 +19,7 @@ componentDidMount() {
     ajaxHelpers.ticketCall(this.props.ticketId,'getTicket').then((data)=> {
       this.setState({ticketData:data});
     }).always(()=>{
-      this.setState({loading:false})
+      this.setState({loading:false});
     });
 }
 
@@ -28,14 +28,14 @@ updateTicket(status){
       ajaxHelpers.ticketCall(this.props.ticketId,'parkTicket').then((data)=> {
       this.setState({ticketData:data});
       }).always(()=>{
-      this.setState({loading:false})
+      this.setState({loading:false});
     });
 }
 
 
 getStatusIndicator(){
   
-  const { status } = !!this.state.ticketData ? this.state.ticketData : { };
+  const { status } = this.state.ticketData || { };
   
   let statusObject = {
       statClass :"primary",
@@ -88,7 +88,7 @@ render () {
   					  </h4>
   			</div>
 			
-      { !loading && !!ticketData ? 
+      { !loading  ? 
        
        <div>
 

@@ -18,8 +18,12 @@ class Home extends Component {
         
             <div className="container home-body">
             <h1>How does it work ?</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra turpis lorem, vitae condimentum dui vestibulum a. Mauris in tortor nibh. Nunc ac varius velit, eu cursus ex. Nunc feugiat odio sit amet urna sodales luctus. Fusce tempor tristique est, eu tempor magna viverra et. Nam nec interdum odio. Curabitur vestibulum ut felis in faucibus.</p>
-            <p>Phasellus imperdiet sodales lorem,  After Y2K, the end of the world had become a cliché. But who was I to talk, a brooding underdog avenger alone against an empire of evil, out to right a grave injustice? Everything was subjective. There were only personal apocalypses. Nothing is a cliché when it's happening to you - Max Payne elit tempus, id pharetra lorem elementum. Phasellus sit amet erat ornare sem egestas varius sit amet ut nunc. Suspendisse sit amet nisl vitae mi mattis luctus. Integer at felis mi. Vivamus et purus et ligula dignissim euismod in quis magna. Suspendisse cursus eleifend augue non tristique. Aliquam rutrum facilisis massa at tincidunt. Duis nec ante quam. Proin eleifend elit felis, vel egestas lacus hendrerit sit amet. In urna lectus, aliquam a dapibus nec, auctor sit amet eros.</p>
+            <p>You can book your car/bike parking ticket for your office location even if from home. Check real-time parking availability status right from your smart phone and decide conveniently.</p>
+            <p>User need to register through an internal portal to avail this service. This info will be used to authenticate user in the mobile app.</p>
+            <p>User can check real-time parking availability on their smart-phone any time (even at home). It'll give them flexibility to decide conveniently.</p>
+            <p>User can book parking ticket in advance (even at home) for same day. Ticket will be valid for a duration (say 1.5 hours, depends on city, traffic condition etc.) User can cancel ticket any time before expiry.</p>
+            <p>User need to show valid ticket while entering into office premises. Security personnel will scan ticket and mark as 'occupied'. User need to show same ticket to security personnel in exit to mark it 'released'.</p>
+            <p>For 'No show', booking will be marked as 'fraud' and x such incidents will block user for further ticket booking. To avoid 'No show' user has to enter corresponding parking area before ticket expiry or cancel his ticket.</p>
             
             <h1>Parking Slots We Service</h1>
             <div className='stats-box'>
