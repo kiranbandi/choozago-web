@@ -11,39 +11,78 @@ export default class GraphCard extends Component {
     
     constructor(props) {
         super(props);
+        this.onChartClick=this.onChartClick.bind(this);
+        
     }
     
     mixinData() {
         
-        const { slotsAvailable,slotsBooked } = this.props.slotData ;
+        const { slotsAvailable, slotsBooked, slotsParked } = this.props.slotData ;
         
     return  [
           {
               value: slotsBooked,
-              color:"#F7464A",
+              color: "#9f86ff",
               label: "Booked"
+          },
+            {
+              value: slotsParked,
+              color:"#1bc98e",
+              label: "Parked"
           },
           {
               value: slotsAvailable,
-              color: "#FDB45C",
+              color: "#1ca8dd",
               label: "Available"
           }];
           
         
+    }
+    
+    onChartClick(e){
+    
+    let { onClick, locationKey, selected } = this.props;
+    onClick(e,locationKey);
+    
     }
 
   	render() {
 
 		return (
 		      <div className='col-lg-4 col-md-6'>
-		      <div className='graph-container m-a'>
+		      <div className={`graph-container m-a ${ this.props.selected ?'selected':''}`} onClick={this.onChartClick}>
   				  <h4 className="slot-name m-a-md">
-  				   			{this.props.slotData.name}
+  				   			{this.props.slotData.title}
   				  </h4>
-                <Doughnut data={this.mixinData()} />
-                <h4 className='slot-legend m-a-md'>SLOTS : Booked VS Available</h4>
-              </div>
-              </div>
+                <Doughnut ref='chart' data={this.mixinData()} />
+                <DoughnutChartLegend data={this.mixinData()} />
+          </div>
+          </div>
 		);
 	}
 }  
+
+export class DoughnutChartLegend extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+
+        let displayLegend = this.props.data.map((item, index) => {
+            let tdStyle = { "backgroundColor": item.color, width: "40px" };
+            return <tr key={index}>
+          						<td style={tdStyle}></td>
+          						<td>{item.label}</td>
+          						<td>{item.value}</td>
+        					</tr>;
+        });
+        return (<div className="table-responsive m-a text-center">
+          				<table className="table table-condensed">
+          					<tbody>
+          						{displayLegend}
+          					</tbody>
+          				</table>
+          			</div>);
+    }
+}

@@ -1,80 +1,129 @@
 import React, { Component } from 'react';
 import { GraphCard,Statcard } from '../components';
 
-var graphData = [
+var locationData = [
     {
-        'name':'Gurgaon Infospace',
-        'slotsAvailable':237,
-        'slotsBooked':157
+        'title':'Gurgaon Infospace',
+        'slotsAvailable':130,
+        'slotsBooked':27,
+        'slotsParked':101,
+        'slotsCancelled':23
     },
     {
-        'name':'Delhi ShastriPark',
+        'title':'Delhi Shastri Park',
         'slotsAvailable':65,
-        'slotsBooked':15
+        'slotsBooked':31,
+        'slotsParked':30,
+        'slotsCancelled':42
     },
     {
-        'name':'Gurgaon 7B',
-        'slotsAvailable':120,
-        'slotsBooked':90
+        'title':'Gurgaon 7B',
+        'slotsAvailable':0,
+        'slotsBooked':15,
+        'slotsParked':85,
+        'slotsCancelled':12
     }] ,
     
     statData = [
     {
-        'title':'Total Slots Available',
-        'count':450,
+        'title':'Slots Available',
         'icon':'location',
-        'type':'primary'
+        'type':'primary',
+        'keyedIndex':'slotsAvailable'
     },
     {
-        'title':'Total Slots Booked',
-        'count':102,
+        'title':'Slots Booked',
         'icon':'clipboard',
-        'type':'success'
+        'type':'info',
+        'keyedIndex':'slotsBooked'
     },
     {
-        'title':'Ongoing Bookings',
-        'count':8,
+        'title':'Slots Parked',
         'icon':'new-message',
-        'type':'info'
+        'type':'success',
+        'keyedIndex':'slotsParked'
     },
     {
         'title':'Bookings Cancelled',
-        'count':9,
         'icon':'layers',
-        'type':'danger'
-    }
+        'type':'danger',
+        'keyedIndex':'slotsCancelled'
+    }];
     
-    ];
 
 class Dashboard extends Component {
 
 constructor(props) {
   super(props);
+  this.state={
+      locationKey:false
+  };
+  this.setKey = this.setKey.bind(this);
 }
 
+setKey(e,locationKey){
+    this.setState({locationKey});    
+}
+
+locationDataMapper(val,ind){
+    let type='primary',
+    availability=val.slotsAvailable/(val.slotsAvailable+val.slotsBooked+val.slotsParked);
+    
+    if(availability==0){
+        type='danger';
+    }
+    else if(availability<=0.5){
+        type='warning';
+    }
+
+ return <Statcard key={ind}
+        title={val.title}
+        count={`${val.slotsAvailable} / ${val.slotsAvailable+val.slotsBooked+val.slotsParked}`}
+        type={type}
+        className={`col-md-4 col-sm-6`}
+        />;
+}
 
 render () {
-    const graphList = graphData.map((val,ind)=> <GraphCard key={ind} slotData={val}/> ),
-          statCardList = statData.map((val,ind)=> <Statcard key={ind} {...val} /> );
+    const graphList = locationData.map((val,ind)=> <GraphCard onClick={this.setKey} selected={this.state.locationKey===ind} key={ind} locationKey={ind} slotData={val}/>),
+          statCardList =this.state.locationKey!==false?statData.map((val,ind)=> {
+           return <Statcard key={ind} {...val} count={locationData[this.state.locationKey][val.keyedIndex]}/>;   
+          }):null ,
+          quickViewData = locationData.map(this.locationDataMapper); 
+          
     return (
         	<div className='dashboard-container container m-t'>
         	
-    		<div className="hr-divider">
-    		  <h4 className="hr-divider-content hr-divider-heading">
-    		  Parking Stats Quick-View
-    		  </h4>
-    		</div>
-            <div className="row statcards">
-                {statCardList}
-            </div>
+        		<div className="row hr-divider">
+        		  <h4 className="hr-divider-content hr-divider-heading">
+        		  Parking Stats Quick-View
+        		  </h4>
+        		</div>
+            	<div className='row quickViewBox'>
+                    {quickViewData}
+                </div>
+    		
 
-    	<div className="hr-divider">
-		  <h4 className="hr-divider-content hr-divider-heading">
-		  Stats across all locations
-		  </h4>
-		</div>
-          {graphList}
-    	</div>
+            	<div className="row hr-divider">
+        		  <h4 className="hr-divider-content hr-divider-heading">
+        		  Stats across all locations
+        		  </h4>
+        		</div>
+                <div className='row'>
+                    {graphList}
+                </div>
+    	
+            	{ this.state.locationKey!==false && 
+            	<div className='row locationStatBox'>
+            	<div className="hr-divider">
+        		  <h4 className="hr-divider-content hr-divider-heading">
+        		  Parking Stats at {locationData[this.state.locationKey].title}
+        		</h4>
+        		</div>
+                        {statCardList}
+                </div>}
+        	   
+           </div>  
 
     )
     

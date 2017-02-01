@@ -6,7 +6,7 @@ import Chart from 'chart.js'
 Chart.defaults.global.responsive = true;
 
 var Statcard = (props) => {
-     return (<div className="statcard-container col-sm-6 col-md-3 m-b">
+     return (<div className={`statcard-container m-b ${props.className}`}>
                 <div className={`statcard statcard-${ props.type }`}>
                   <div className="title-box">
                     <span className="statcard-desc">{ props.title }</span>
@@ -14,10 +14,15 @@ var Statcard = (props) => {
                       { props.count }
                     </h2>
                   </div>
-                 <span className={`icon icon-${ props.icon }`}></span> 
+                 {!!props.icon && <span className={`icon icon-${ props.icon }`}></span> } 
                 </div>
-              </div>)
+              </div>);
               
+};
+
+Statcard.defaultProps = {
+  className:'col-sm-6 col-md-3',
+  type:'primary'
 }
 
 export default Statcard;

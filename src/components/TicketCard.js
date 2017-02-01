@@ -46,8 +46,8 @@ getStatusIndicator(){
     switch (status) {
       
       case 'parked':
-      statusObject.statClass ="primary",
-      statusObject.alertClass ="info",
+      statusObject.statClass ="info",
+      statusObject.alertClass ="success",
       statusObject.alertIcon = "thumbs-up";
       break;
           
@@ -58,8 +58,8 @@ getStatusIndicator(){
       break;
         
       case 'exited':
-      statusObject.statClass ="primary",
-      statusObject.alertClass ="info",
+      statusObject.statClass ="success",
+      statusObject.alertClass ="primary",
       statusObject.alertIcon = "home";
       break;
         
@@ -106,7 +106,7 @@ render () {
           <div className='name-slot'>
             <h3 className="statcard-desc m-a">{`Name : ${ticketData.firstName} ${ticketData.lastName}`}</h3>
             <h3 className="statcard-desc ">{`Company : ${ticketData.company}`}</h3>
-            <h3 className="statcard-desc">{`Booking Date : ${moment(ticketData.time*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>
+            <h3 className="statcard-desc">{`Booking Time : ${moment(ticketData.time*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>
             { !!ticketData.parkedtime && <h3 className="statcard-desc">{`Parked Time : ${moment(ticketData.parkedtime*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>}
           </div>
           </div>
@@ -120,7 +120,6 @@ render () {
       </div> 
       
      : <Loading type='spin' color='#3fbfe2' />}
-      
       
       </div>
     )

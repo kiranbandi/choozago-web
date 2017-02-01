@@ -4,10 +4,22 @@
 			margin:20px auto;
 
 			.hr-divider-content {
-			background:#1a1c22;
 			font-weight:bold;
 			text-align:center;
 			margin : 30px auto;
 			}
+	}
+	
+	.quickViewBox {
+		text-align:center;
+		.statcard-number {
+			padding:10px;
+		}
+	}
+	
+	.locationStatBox {
+			.statcard-number {
+			padding-top:10px;
+		}
 	}
 }
