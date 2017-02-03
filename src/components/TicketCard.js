@@ -109,6 +109,7 @@ render () {
             <h3 className="statcard-desc">{`Booking Time : ${moment(ticketData.time*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>
             { !!ticketData.parkedtime && <h3 className="statcard-desc">{`Parked Time : ${moment(ticketData.parkedtime*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>}
             { !!ticketData.exitedtime && <h3 className="statcard-desc">{`Exited Time : ${moment(ticketData.exitedtime*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>}
+            { !!ticketData.cancelledtime && <h3 className="statcard-desc">{`Cancelled Time : ${moment(ticketData.cancelledtime*1000).format("ddd, MMM DD YYYY, h:mm a")}`}</h3>}
           </div>
           </div>
           
