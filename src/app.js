@@ -5,10 +5,12 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { NotFound,Home,ParkCar,Dashboard,Login} from './pages';
 import { Container } from './components';
 
+
 //Root sass file for webpack to compile
 import './sass/main.scss';
 
-window.jQuery = window.$;
+//Initial Default settings 
+window.jQuery = window.$; // QuickFix for toastr error
 
 class App extends Component {
   
