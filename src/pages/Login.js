@@ -9,7 +9,6 @@ constructor(props) {
         super(props);
 }
 
-
 makeCall(e){
 	
 	e.preventDefault();
@@ -20,7 +19,6 @@ makeCall(e){
     let authenticationData= {
         Username: username,
         Password: password,
-            
         };
             
         let userData= {
