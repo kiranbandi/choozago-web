@@ -1,17 +1,20 @@
 /*global $*/
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
+import * as sessionActions from '../redux/actions/sessionActions';
+import {bindActionCreators} from 'redux';
 
-export default class NavBar extends Component {
+class NavBar extends Component {
     
     constructor(props) {
             super(props);
+             this.logOut = this.logOut.bind(this);
     }
 
     componentDidMount(){
 
         $('.navbar-collapse').on('click',function(e) {
-
              var toggle = $(".navbar-toggle").is(":visible");
                 if( $(e.target).is('a') && toggle ) {
                     $(this).collapse('hide');
@@ -19,6 +22,11 @@ export default class NavBar extends Component {
         });
 
     }
+    
+    logOut(event) {
+    event.preventDefault();
+    this.props.actions.logOutUser();
+  }
     
   	render() {
 		return (
@@ -46,10 +54,15 @@ export default class NavBar extends Component {
                             </ul>
                             
                             <ul className='nav navbar-nav navbar-right'>
-                                <li>
-                                    <Link to='/Login'>
-                                        <span className="icon icon-user"></span> Login
-                                    </Link>
+                                <li> { this.props.logged_in ?
+                                        <Link to='/Logout' onClick={this.logOut}>
+                                        <span className="icon icon-log-out"></span> Logout
+                                        </Link>
+                                        :
+                                        <Link to='/Login'>
+                                            <span className="icon icon-login"></span> Login
+                                        </Link>
+                                     }
                                 </li>
                             </ul>
                         </div>
@@ -58,3 +71,15 @@ export default class NavBar extends Component {
 		);
 	}
 }  
+
+function mapStateToProps(state, ownProps) {  
+  return {logged_in: state.session};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(sessionActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
