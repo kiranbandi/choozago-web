@@ -12,8 +12,8 @@ constructor(props) {
         super(props);
         this.state = {
             credentials:{
-                username:'',
-                password:''
+                Username:'',
+                Password:''
             }
         };
         this.onChange = this.onChange.bind(this);
@@ -56,11 +56,11 @@ onSubmit(e){
                 { firstTimeUser && <div role="alert" className="alert alert-danger m-a"><p>Please set a new password with the following rules : </p><ul> <li>Minimum character Length 8</li> <li>Atleast one uppercase character, lowercase character, special character and a number each</li> </ul> </div> }
                 <div className="input-group m-a">
                     <span className="input-group-addon icon icon-users"></span>
-                    <input type="text" className="form-control" name="username" placeholder="USERID" onChange={this.onChange}/>
+                    <input type="text" className="form-control" name="Username" placeholder="USERID" onChange={this.onChange}/>
                 </div>
                 <div className="input-group m-a">
                     <span className="input-group-addon icon icon-lock"></span>
-                    <input type="password" className="form-control" name="password" placeholder="PASSWORD" onChange={this.onChange}/>
+                    <input type="password" className="form-control" name="Password" placeholder="PASSWORD" onChange={this.onChange}/>
                 </div>
                 <button className="btn btn-success-outline admin-btn" type="button" onClick={this.onSubmit}>
                     <span className='login-span'>{ firstTimeUser ? "SET PASSWORD":"LOGIN" } </span> 

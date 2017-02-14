@@ -8,24 +8,20 @@ import { userPool } from "../../utils/getUserPool";
 
 var CognitoUserReference = (function () {
     
-    var cognitoUser,username,awsUserAttributes,authenticationDetails;
+    var cognitoUser,username,awsUserAttributes;
 
-    function createCognitoUser(credentials) {
-      
-    let authenticationData= { Username: credentials.username, Password: credentials.password };
-    let userData= { Username:credentials.username, Pool: userPool };
-    username= credentials.username;
+    function createCognitoUser(Username) {
+    let userData= { Username , Pool: userPool };
+    username=Username;
     cognitoUser= new CognitoUser(userData);
-    authenticationDetails= new AuthenticationDetails(authenticationData); 
-    
     }
  
     return {
         getCognitoUser: function (credentials) {
-            if ( !cognitoUser ||  username!=credentials.username ) {
-                createCognitoUser(credentials);
+            if ( !cognitoUser ||  username!=credentials.Username ) {
+                createCognitoUser(credentials.Username);
             }
-            return { cognitoUser, authenticationDetails, awsUserAttributes };
+            return { cognitoUser, awsUserAttributes };
         },
         setAwsAttributes: function (awsUserAttributesProps) {
             awsUserAttributes = awsUserAttributesProps ;
@@ -62,7 +58,7 @@ export function setNewPassword(credentials) {
         delete awsUserAttributes.email_verified;
         delete awsUserAttributes.phone_number_verified;
 
-    return cognitoUser.completeNewPasswordChallenge(credentials.password,awsUserAttributes,{
+    return cognitoUser.completeNewPasswordChallenge(credentials.Password,awsUserAttributes,{
        onSuccess: function (result) {
                    toastr["success"]("Your new password has been set , Please login again");
                     dispatch(toggleLoader());
@@ -81,7 +77,8 @@ export function logInUser(credentials) {
   
   return function(dispatch) {
     
-    let { cognitoUser , authenticationDetails } = CognitoUserReference.getCognitoUser(credentials);
+    let { cognitoUser } = CognitoUserReference.getCognitoUser(credentials) ,
+        authenticationDetails= new AuthenticationDetails(credentials); 
     
     return cognitoUser.authenticateUser( authenticationDetails, {
             onSuccess: function (result) {
