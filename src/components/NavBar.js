@@ -13,7 +13,7 @@ class NavBar extends Component {
     }
 
     componentDidMount(){
-
+    //fix for mobile browsers , navbar doesnt automatically collapse and needs to be toggled manually
         $('.navbar-collapse').on('click',function(e) {
              var toggle = $(".navbar-toggle").is(":visible");
                 if( $(e.target).is('a') && toggle ) {
@@ -51,6 +51,11 @@ class NavBar extends Component {
                                         <span className="icon icon-line-graph"></span> Dashboard
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link to='/Configuration'>
+                                        <span className="icon icon-tools"></span> Configuration
+                                    </Link>
+                                </li>                                
                             </ul>
                             
                             <ul className='nav navbar-nav navbar-right'>
@@ -60,7 +65,7 @@ class NavBar extends Component {
                                         </Link>
                                         :
                                         <Link to='/Login'>
-                                            <span className="icon icon-login"></span> Login
+                                            <span className="icon icon-user"></span> Login
                                         </Link>
                                      }
                                 </li>
@@ -73,7 +78,7 @@ class NavBar extends Component {
 }  
 
 function mapStateToProps(state, ownProps) {  
-  return {logged_in: state.session};
+  return {logged_in: state.session.sessionStatus};
 }
 
 function mapDispatchToProps(dispatch) {

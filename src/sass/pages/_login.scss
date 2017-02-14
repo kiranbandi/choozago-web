@@ -45,5 +45,24 @@
     color:inherit;
 }
 
+.admin-btn {
+    line-height:35px;
+.login-span{
+      vertical-align:top;
+      & + div {
+    margin-left: 10px;
+    vertical-align:top;
+    display:inline-block;
+}    
+
+}    
+
+    
+    
+}
+
+
+
+
 
 }

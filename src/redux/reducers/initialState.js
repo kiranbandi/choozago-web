@@ -1,5 +1,3 @@
 export default {  
-  cats: [],
-  hobbies: [],
-  session: !!sessionStorage.jwt
+  session: { sessionStatus:!!sessionStorage.jwt , loginLoader:false , firstTimeUser:false }
 };
