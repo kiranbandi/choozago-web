@@ -38,7 +38,7 @@
   "scripts": {
     "start": "webpack-dev-server --watch-poll",
     "c9start": "webpack-dev-server --port $PORT --host $IP  --content-base build/",
-    "build": "webpack -p",
+    "build": "webpack -p --config ./webpack.config.js",
     "deploy": "npm run build && npm run deploy-gh",
     "deploy-gh": "gh-pages -d build"
   },

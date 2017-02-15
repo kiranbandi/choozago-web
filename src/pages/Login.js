@@ -56,7 +56,7 @@ onSubmit(e){
                 { firstTimeUser && <div role="alert" className="alert alert-danger m-a"><p>Please set a new password with the following rules : </p><ul> <li>Minimum character Length 8</li> <li>Atleast one uppercase character, lowercase character, special character and a number each</li> </ul> </div> }
                 <div className="input-group m-a">
                     <span className="input-group-addon icon icon-users"></span>
-                    <input type="text" className="form-control" name="Username" placeholder="USERID" onChange={this.onChange}/>
+                    <input type="text" className="form-control" name="Username" placeholder="USERID" onChange={this.onChange} disabled={firstTimeUser} />
                 </div>
                 <div className="input-group m-a">
                     <span className="input-group-addon icon icon-lock"></span>

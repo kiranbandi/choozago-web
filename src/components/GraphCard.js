@@ -77,7 +77,7 @@ export class DoughnutChartLegend extends Component {
           						<td>{item.value}</td>
         					</tr>;
         });
-        return (<div className="table-responsive m-a text-center">
+        return (<div className="table-responsive legend-table text-center">
           				<table className="table table-condensed">
           					<tbody>
           						{displayLegend}

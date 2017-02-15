@@ -8,23 +8,25 @@ import { userPool } from "../../utils/getUserPool";
 
 var CognitoUserReference = (function () {
     
-    var cognitoUser,username,awsUserAttributes;
+    var cognitoUser,authenticationDetails,awsUserAttributes;
 
-    function createCognitoUser(Username) {
-    let userData= { Username , Pool: userPool };
-    username=Username;
+    function createCognitoUser(credentials) {
+    let userData= { Username:credentials.Username , Pool: userPool };
     cognitoUser= new CognitoUser(userData);
+    authenticationDetails= new AuthenticationDetails(credentials); 
+
     }
  
     return {
-        getCognitoUser: function (credentials) {
-            if ( !cognitoUser ||  username!=credentials.Username ) {
-                createCognitoUser(credentials.Username);
-            }
-            return { cognitoUser, awsUserAttributes };
+        createNewCognitoUser: function (credentials) {
+            createCognitoUser(credentials);
+            return { cognitoUser, authenticationDetails };
         },
         setAwsAttributes: function (awsUserAttributesProps) {
             awsUserAttributes = awsUserAttributesProps ;
+        },
+        getCognitoUser:function (credentials) {
+            return { cognitoUser, awsUserAttributes };
         }
     };
 })();
@@ -77,8 +79,8 @@ export function logInUser(credentials) {
   
   return function(dispatch) {
     
-    let { cognitoUser } = CognitoUserReference.getCognitoUser(credentials) ,
-        authenticationDetails= new AuthenticationDetails(credentials); 
+    let { cognitoUser, authenticationDetails } = CognitoUserReference.createNewCognitoUser(credentials);
+
     
     return cognitoUser.authenticateUser( authenticationDetails, {
             onSuccess: function (result) {
