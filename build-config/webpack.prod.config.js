@@ -14,23 +14,7 @@ module.exports = {
  }),
  new webpack.optimize.UglifyJsPlugin()] ,   
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
-      },
-       {  test: /\.scss$/, 
-          loaders: ['style', 'css', 'sass']
-      },
-        { test: /\.json$/,
-          loader: 'json-loader'
-        
-      },
-      { test: /\.css/,
-          loaders: ['style','css']
-      }
-    ]
+      loaders: require('./loaders.config')
   }
 }
 

@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as sessionActions from '../redux/actions/sessionActions';
 import Loading from 'react-loading';
 
-
 class Login extends Component {
 
 constructor(props) {
@@ -28,16 +27,19 @@ onChange(event) {
 }
 
 onSubmit(e){
+    const { actions, firstTimeUser, loaderStatus } = this.props;
 	e.preventDefault();
-	this.props.actions.toggleLoader();
-	if(this.props.firstTimeUser)
+	
+	if(!loaderStatus){
+	this.props.actions.toggleLoader(); 
+	if(firstTimeUser)
 	{
-	  this.props.actions.setNewPassword(this.state.credentials);  
+	  actions.setNewPassword(this.state.credentials);  
 	}
 	else {
-	  this.props.actions.logInUser(this.state.credentials);
+	     actions.logInUser(this.state.credentials);
 	}
-
+	}
 }
 
   render () {
@@ -64,7 +66,7 @@ onSubmit(e){
                 </div>
                 <button className="btn btn-success-outline admin-btn" type="button" onClick={this.onSubmit}>
                     <span className='login-span'>{ firstTimeUser ? "SET PASSWORD":"LOGIN" } </span> 
-                  { loaderStatus  && <Loading type='spin' height='30px' width='30px' color='#d6e5ff' /> }
+                    <Loading type='spin' height='30px' width='30px' color='#d6e5ff' />
                 </button>
                 
       		</div>
