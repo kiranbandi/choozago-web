@@ -3,6 +3,7 @@ import toastr from '../../utils/toastr';
 
 import { AuthenticationDetails, CognitoUser } from "amazon-cognito-identity-js";
 import { userPool } from "../../utils/getUserPool";
+import { hashHistory } from 'react-router';
 
 
 
@@ -34,12 +35,16 @@ var CognitoUserReference = (function () {
 
 
 export function loginSuccess() {  
-  return {type: types.LOG_IN_SUCCESS};
+    let { state = { nextPathname:'/'} } = hashHistory.getCurrentLocation();
+    hashHistory.push(state.nextPathname);
+    return {type: types.LOG_IN_SUCCESS};
 }
 
 export function logOutUser() {  
   sessionStorage.removeItem('jwt');
+  hashHistory.push("/");
   return {type: types.LOG_OUT};
+  
 }
 
 export function toggleLoader() {  

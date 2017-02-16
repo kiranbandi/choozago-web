@@ -64,11 +64,11 @@ onSubmit(e){
                     <span className="input-group-addon icon icon-lock"></span>
                     <input type="password" className="form-control" name="Password" placeholder="PASSWORD" onChange={this.onChange}/>
                 </div>
-                <button className="btn btn-success-outline admin-btn" type="button" onClick={this.onSubmit}>
+                <button className="btn btn-success admin-btn" type="button" onClick={this.onSubmit}>
                     <span className='login-span'>{ firstTimeUser ? "SET PASSWORD":"LOGIN" } </span> 
-                    <Loading type='spin' height='30px' width='30px' color='#d6e5ff' />
+                    { loaderStatus && <Loading type='spin' height='30px' width='30px' color='#d6e5ff' delay={-1} />}                
                 </button>
-                
+
       		</div>
 
         </div>
