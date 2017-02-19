@@ -3,9 +3,9 @@
 module.exports = {
   entry: ['babel-polyfill','./src/app.js'],
   output: {
-        path: __dirname + '/build/assets/js',
+        path: __dirname + '/build/assets/bundle',
         filename: "bundle.js",
-        publicPath:"/assets/js"
+        publicPath:"/assets/bundle"
     },
   devServer: {
     inline: true,

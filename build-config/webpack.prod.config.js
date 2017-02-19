@@ -1,12 +1,14 @@
-var webpack = require("webpack"); 
+'use strict';
+var webpack = require("webpack");
+var path = require("path");
 
 module.exports = {
-  entry: './src/app.js',
+  entry: ['babel-polyfill','./src/app.js'],
   output: {
-        path: __dirname + '/build/assets/js',
+        path: path.resolve("build/assets/bundle"),
         filename: "bundle.js",
-        publicPath:"/assets/js"
-    },
+        publicPath: path.resolve("build/assets/bundle")+'/'
+      },
   plugins:[new webpack.DefinePlugin({
   'process.env': {
     NODE_ENV: JSON.stringify('production')
@@ -17,4 +19,5 @@ module.exports = {
       loaders: require('./loaders.config')
   }
 }
+
 

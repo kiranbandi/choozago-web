@@ -1,5 +1,11 @@
 // import base - contains global styles, such as resets, typography, colors
 
+// import vendors 
+
+@import 'vendor/toastr';
+@import 'vendor/toolkit-inverse';
+
+
 // import components- contains each self-contained component in its own .scss partial
 
 @import 'components/container';
@@ -17,10 +23,7 @@
 @import 'pages/login';
 @import 'pages/dashboard';
 
-// import vendors 
 
-@import 'vendor/toastr';
-@import 'vendor/toolkit-inverse';
 
 
 
