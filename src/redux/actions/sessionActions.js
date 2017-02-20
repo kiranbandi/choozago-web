@@ -41,7 +41,7 @@ export function loginSuccess() {
 }
 
 export function logOutUser() {  
-  sessionStorage.removeItem('jwt');
+  localStorage.removeItem('jwt');
   hashHistory.push("/");
   return {type: types.LOG_OUT};
   
@@ -89,7 +89,7 @@ export function logInUser(credentials) {
     
     return cognitoUser.authenticateUser( authenticationDetails, {
             onSuccess: function (result) {
-                    sessionStorage.setItem('jwt', result.getAccessToken().getJwtToken());
+                    localStorage.setItem('jwt', result.getAccessToken().getJwtToken());
                     toastr["success"]("Login Successful");
                     dispatch(loginSuccess());
                 },

@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 
-import choozagoLogo from '../images/choozago.jpg';
-import delSp from '../images/del-sp.png';
-import ggn7b from '../images/ggn-7b.png';
-import ggnInfospace from '../images/ggn-infospace.png';
-
-
 class Home extends Component {
   render () {
     return (
@@ -17,7 +11,7 @@ class Home extends Component {
                 <p><i>Choose on the go</i> Your one stop solution to all your parking needs</p>
                 </div>
                 <div className='col-lg-3 text-lg-right text-center'>
-                <img height='140px' src={choozagoLogo} alt="car logo"/>
+                <img height='140px' src="assets/img/choozago.jpg" alt="car logo"/>
               </div>
               </div>
             </div>
@@ -35,17 +29,17 @@ class Home extends Component {
             <div className='stats-box'>
                             
                  <div className="col-lg-4 col-md-6 statcard p-a-md text-center">
-                 <img className='img-responsive' src={delSp} alt="delsp image" />
+                 <img className='img-responsive' src="assets/img/del-sp.png" alt="delsp image" />
                     <h2 className="statcard-desc">Delhi Shastri Park</h2>
                   </div>
                   
                   <div className="col-lg-4 col-md-6 statcard p-a-md text-center">
-                  <img className='img-responsive' src={ggn7b} alt="7B image" />
+                  <img className='img-responsive' src="assets/img/ggn-7b.png" alt="7B image" />
                     <h2 className="statcard-desc">Gurgaon 7B</h2>
                   </div>
                   
                   <div className="col-lg-4 col-md-6 statcard p-a-md text-center">
-                  <img className='img-responsive' src={ggnInfospace} alt="Ggn inf image" />
+                  <img className='img-responsive' src="assets/img/ggn-infospace.png" alt="Ggn inf image" />
                     <h2 className="statcard-desc">Gurgaon Infospace</h2>
                   </div>
         
