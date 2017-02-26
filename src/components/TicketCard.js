@@ -121,7 +121,7 @@ render () {
 
       </div> 
       
-     : <Loading type='spin' color='#3fbfe2' />}
+     : <Loading type='spin' color='#3fbfe2' delay={-1} />}
       
       </div>
     )

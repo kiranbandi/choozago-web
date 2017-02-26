@@ -13,6 +13,31 @@ var pullParams = {
 };
 
 
+ajaxHelpers.getStatus = function(locationCode) {
+
+  let action = 'getStatus';
+    
+    let payLoad =JSON.stringify({ action, data: { locationCode } },null,2) ,
+        pullParamsData = Object.assign({},pullParams,{Payload:payLoad})
+
+    return $.Deferred(function( defer ) {
+        
+        lambda.invoke(pullParamsData, function(error, data) {
+          if (error) {
+                defer.reject();
+                toastr["error"]("Network error please try again", "ERROR")
+          } 
+          else {
+            console.log(data);
+            defer.reject();
+          }
+        });
+    
+    }).promise();
+
+}
+
+
 ajaxHelpers.ticketCall = function(ticketId,action) {
     
     let payLoad =JSON.stringify({ action, data: { ticketId } },null,2) ,

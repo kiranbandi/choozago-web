@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { GraphCard,Statcard } from '../components';
+import Loading from 'react-loading';
+import ajaxHelpers from '../utils/ajaxHelpers'
 
 var locationData = [
     {
@@ -56,7 +58,8 @@ class Dashboard extends Component {
 constructor(props) {
   super(props);
   this.state={
-      locationKey:false
+      locationKey:false,
+      loading: true
   };
   this.setKey = this.setKey.bind(this);
 }
@@ -65,6 +68,15 @@ setKey(e,locationKey){
     this.setState({locationKey});    
 }
 
+componentDidMount() {
+    ajaxHelpers.getStatus('ggn-7b').then((data)=> {
+      //write code here to loose staple incoming data onto global pre set variables
+    }).always(()=>{
+      this.setState({loading:false});
+    });
+}
+
+
 locationDataMapper(val,ind){
     let type='primary',
     availability=val.slotsAvailable/(val.slotsAvailable+val.slotsBooked+val.slotsParked);
@@ -72,7 +84,7 @@ locationDataMapper(val,ind){
     if(availability==0){
         type='danger';
     }
-    else if(availability<=0.5){
+    else if(availability<=0.2){
         type='warning';
     }
 
@@ -89,11 +101,18 @@ render () {
           statCardList =this.state.locationKey!==false?statData.map((val,ind)=> {
            return <Statcard key={ind} {...val} count={locationData[this.state.locationKey][val.keyedIndex]}/>;   
           }):null ,
-          quickViewData = locationData.map(this.locationDataMapper); 
+          quickViewData = locationData.map(this.locationDataMapper),
+          loading = this.state.loading ,
+          loadingStyle = { margin:"10px auto" };
           
     return (
+
+ 
         	<div className='dashboard-container container m-t'>
-        	
+        	    
+                { !loading  ?
+                    <div>
+
         		<div className="row hr-divider">
         		  <h4 className="hr-divider-content hr-divider-heading">
         		  Parking Stats Quick-View
@@ -121,9 +140,12 @@ render () {
         		</h4>
         		</div>
                         {statCardList}
-                </div>}
+                </div> } 
         	   
            </div>  
+             : <span className='loadingContainer'><Loading type='spin' color='#3fbfe2' /></span> }
+
+                 </div>  
 
     )
     
@@ -131,3 +153,5 @@ render () {
 };
 
 export default Dashboard;
+
+
