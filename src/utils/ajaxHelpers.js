@@ -28,8 +28,11 @@ ajaxHelpers.getStatus = function(locationCode) {
                 toastr["error"]("Network error please try again", "ERROR")
           } 
           else {
-            console.log(data);
-            defer.reject();
+              var recordData = JSON.parse(data.Payload);
+            if(!recordData) {
+                toastr["error"]("No Records Found , Please try again")
+            }
+            defer.resolve(recordData);
           }
         });
     

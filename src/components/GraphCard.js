@@ -17,21 +17,21 @@ export default class GraphCard extends Component {
     
     mixinData() {
         
-        const { slotsAvailable, slotsBooked, slotsParked } = this.props.slotData ;
+        const { availableSlots, booked, parked } = this.props.slotData ;
         
     return  [
           {
-              value: slotsBooked,
+              value: booked,
               color: "#9f86ff",
               label: "Booked"
           },
             {
-              value: slotsParked,
+              value: parked,
               color:"#1bc98e",
               label: "Parked"
           },
           {
-              value: slotsAvailable,
+              value: availableSlots,
               color: "#1ca8dd",
               label: "Available"
           }];

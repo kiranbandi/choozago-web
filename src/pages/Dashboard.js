@@ -6,24 +6,30 @@ import ajaxHelpers from '../utils/ajaxHelpers'
 var locationData = [
     {
         'title':'Gurgaon Infospace',
-        'slotsAvailable':130,
-        'slotsBooked':27,
-        'slotsParked':101,
-        'slotsCancelled':23
+        'availableSlots':130,
+        'booked':27,
+        'parked':101,
+        'cancelled':23,
+        'exited':10,
+        'expired':10
     },
     {
         'title':'Delhi Shastri Park',
-        'slotsAvailable':65,
-        'slotsBooked':31,
-        'slotsParked':30,
-        'slotsCancelled':42
+        'availableSlots':65,
+        'booked':31,
+        'parked':30,
+        'cancelled':42,
+        'exited':10,
+        'expired':10
     },
     {
         'title':'Gurgaon 7B',
-        'slotsAvailable':0,
-        'slotsBooked':15,
-        'slotsParked':85,
-        'slotsCancelled':12
+        'availableSlots':0,
+        'booked':0,
+        'parked':0,
+        'cancelled':0,
+        'exited':0,
+        'expired':0
     }] ,
     
     statData = [
@@ -31,26 +37,39 @@ var locationData = [
         'title':'Slots Available',
         'icon':'location',
         'type':'primary',
-        'keyedIndex':'slotsAvailable'
+        'keyedIndex':'availableSlots'
     },
     {
         'title':'Slots Booked',
         'icon':'clipboard',
         'type':'info',
-        'keyedIndex':'slotsBooked'
+        'keyedIndex':'booked'
     },
     {
         'title':'Slots Parked',
         'icon':'new-message',
         'type':'success',
-        'keyedIndex':'slotsParked'
+        'keyedIndex':'parked'
     },
     {
         'title':'Bookings Cancelled',
-        'icon':'layers',
+        'icon':'block',
+        'type':'warning',
+        'keyedIndex':'cancelled'
+    },
+    {
+        'title':'Bookings Expired',
+        'icon':'stopwatch',
         'type':'danger',
-        'keyedIndex':'slotsCancelled'
-    }];
+        'keyedIndex':'expired'
+    },
+    {
+        'title':'Slots Exited',
+        'icon':'align-top',
+        'type':'primary',
+        'keyedIndex':'exited'
+    }
+    ];
     
 
 class Dashboard extends Component {
@@ -70,7 +89,8 @@ setKey(e,locationKey){
 
 componentDidMount() {
     ajaxHelpers.getStatus('ggn-7b').then((data)=> {
-      //write code here to loose staple incoming data onto global pre set variables
+      let { booked=0, cancelled=0, availableSlots=0, parked=0, exited=0, expired=0 } = data;    
+      locationData[2] = Object.assign({},locationData[2],{booked,cancelled,availableSlots,parked,exited,expired});
     }).always(()=>{
       this.setState({loading:false});
     });
@@ -78,19 +98,16 @@ componentDidMount() {
 
 
 locationDataMapper(val,ind){
-    let type='primary',
-    availability=val.slotsAvailable/(val.slotsAvailable+val.slotsBooked+val.slotsParked);
-    
-    if(availability==0){
+    let type='primary';
+
+    if(val.availableSlots==0){
         type='danger';
     }
-    else if(availability<=0.2){
-        type='warning';
-    }
+
 
  return <Statcard key={ind}
         title={val.title}
-        count={`${val.slotsAvailable} / ${val.slotsAvailable+val.slotsBooked+val.slotsParked}`}
+        count={`Free Slots - ${val.availableSlots} `}
         type={type}
         className={`col-md-4 col-sm-6`}
         />;
@@ -99,15 +116,13 @@ locationDataMapper(val,ind){
 render () {
     const graphList = locationData.map((val,ind)=> <GraphCard onClick={this.setKey} selected={this.state.locationKey===ind} key={ind} locationKey={ind} slotData={val}/>),
           statCardList =this.state.locationKey!==false?statData.map((val,ind)=> {
-           return <Statcard key={ind} {...val} count={locationData[this.state.locationKey][val.keyedIndex]}/>;   
+           return <Statcard className={`col-md-4 col-sm-6`} key={ind} {...val} count={locationData[this.state.locationKey][val.keyedIndex]}/>;   
           }):null ,
           quickViewData = locationData.map(this.locationDataMapper),
-          loading = this.state.loading ,
-          loadingStyle = { margin:"10px auto" };
+          loading = this.state.loading ;
           
     return (
 
- 
         	<div className='dashboard-container container m-t'>
         	    
                 { !loading  ?
@@ -147,10 +162,10 @@ render () {
 
                  </div>  
 
-    )
+    );
     
   }
-};
+}
 
 export default Dashboard;
 
